@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Football Website</title>
+
+<style>
+
+body{
+    margin:0;
+    min-height:100vh;
+    background:#d4af37;
+    font-family:Arial,sans-serif;
+    text-align:center;
+}
+
+.page{
+    display:none;
+    min-height:100vh;
+    padding-top:80px;
+}
+
+.page.active{
+    display:block;
+}
+
+
+/* اللغة */
+
+#langue{
+    width:250px;
+    padding:18px;
+    border:0;
+    border-radius:15px;
+    background:white;
+    color:#8b6b13;
+    font-size:20px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+#languages{
+    display:none;
+    width:250px;
+    margin:10px auto;
+}
+
+#languages button{
+    display:block;
+    width:100%;
+    padding:15px;
+    margin:5px 0;
+    border:0;
+    border-radius:12px;
+    background:white;
+    font-size:18px;
+    cursor:pointer;
+}
+
+#welcome{
+    margin:30px;
+    color:green;
+    font-size:30px;
+    font-weight:bold;
+}
+
+#next{
+    padding:17px 45px;
+    border:0;
+    border-radius:15px;
+    background:gray;
+    color:white;
+    font-size:20px;
+}
+
+#next.active{
+    background:green;
+    cursor:pointer;
+}
+
+
+/* الصفحة الثانية */
+
+#welcomeHere{
+    display:inline-block;
+    padding:22px 35px;
+    background:#a85d25;
+    color:white;
+    border-radius:20px;
+    font-size:30px;
+    font-weight:bold;
+    margin-bottom:40px;
+}
+
+.green{
+    display:block;
+    margin:20px auto;
+    padding:18px 35px;
+    border:0;
+    border-radius:18px;
+    background:#138a35;
+    color:white;
+    font-size:21px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.blue{
+    display:block;
+    margin:20px auto;
+    padding:18px 45px;
+    border:0;
+    border-radius:18px;
+    background:#287bd4;
+    color:white;
+    font-size:21px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+
+/* الصفحات الجديدة */
+
+.box{
+    width:90%;
+    max-width:600px;
+    margin:20px auto;
+    padding:25px;
+    background:rgba(255,255,255,0.85);
+    border-radius:20px;
+}
+
+.box button{
+    width:100%;
+    padding:18px;
+    border:0;
+    background:transparent;
+    font-size:21px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.box input{
+    width:85%;
+    padding:12px;
+    margin-top:15px;
+    border-radius:10px;
+    border:1px solid #aaa;
+    font-size:18px;
+    text-align:center;
+}
+
+.back{
+    margin-top:30px;
+    padding:13px 30px;
+    border:0;
+    border-radius:15px;
+    background:#555;
+    color:white;
+    font-size:17px;
+    cursor:pointer;
+}
+
+.problem{
+    display:block;
+    width:90%;
+    max-width:550px;
+    margin:15px auto;
+    padding:20px;
+    border:0;
+    border-radius:18px;
+    background:#138a35;
+    color:white;
+    font-size:20px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.result{
+    width:90%;
+    max-width:700px;
+    margin:25px auto;
+    padding:25px;
+    background:white;
+    border-radius:20px;
+    text-align:right;
+    line-height:1.8;
+}
+
+.phone{
+    background:#138a35;
+    color:white;
+    padding:18px;
+    border-radius:15px;
+    text-align:center;
+    font-size:25px;
+    font-weight:bold;
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     الصفحة 1
+========================= -->
+
+<div id="page1" class="page active">
+
+    <button id="langue" onclick="openLanguages()">
+        Langue ▼
+    </button>
+
+    <div id="languages">
+
+        <button onclick="setLanguage('fr')">
+            Français
+        </button>
+
+        <button onclick="setLanguage('en')">
+            English
+        </button>
+
+        <button onclick="setLanguage('ar')">
+            العربية
+        </button>
+
+    </div>
+
+    <div id="welcome">
+        مرحبا بك
+    </div>
+
+    <button id="next" disabled onclick="goPage2()">
+        التالي
+    </button>
+
+</div>
+
+
+
+<!-- =========================
+     الصفحة 2
+========================= -->
+
+<div id="page2" class="page">
+
+    <div id="welcomeHere">
+        مرحبا بك هنا
+    </div>
+
+    <button
+        id="routineButton"
+        class="green"
+        onclick="goPage3()">
+
+        إصنع روتينك الكروي
+
+    </button>
+
+    <button
+        id="problemsButton"
+        class="blue"
+        onclick="goPage4()">
+
+        مشاكلي
+
+    </button>
+
+    <button class="back" onclick="showPage(1)">
+        رجوع
+    </button>
+
+</div>
+
+
+
+<!-- =========================
+     الصفحة 3
+========================= -->
+
+<div id="page3" class="page">
+
+    <h1 id="routineTitle">
+        إصنع روتينك الكروي
+    </h1>
+
+
+    <div class="box">
+
+        <button onclick="showInput('ageInput')">
+            <span id="ageText">العمر</span> ▼
+        </button>
+
+        <div id="ageInput" style="display:none">
+
+            <input
+                type="number"
+                id="age"
+                placeholder="العمر">
+
+        </div>
+
+    </div>
+
+
+    <div class="box">
+
+        <button onclick="showInput('heightInput')">
+            <span id="heightText">الطول</span> ▼
+        </button>
+
+        <div id="heightInput" style="display:none">
+
+            <input
+                type="number"
+                id="height"
+                placeholder="الطول">
+
+        </div>
+
+    </div>
+
+
+    <div class="box">
+
+        <button onclick="showInput('weightInput')">
+            <span id="weightText">الوزن</span> ▼
+        </button>
+
+        <div id="weightInput" style="display:none">
+
+            <input
+                type="number"
+                id="weight"
+                placeholder="الوزن">
+
+        </div>
+
+    </div>
+
+
+    <button
+        id="routineNext"
+        class="green"
+        onclick="makeRoutine()">
+
+        التالي
+
+    </button>
+
+
+    <div id="routineResult"></div>
+
+
+    <button class="back" onclick="showPage(2)">
+        رجوع
+    </button>
+
+</div>
+
+
+
+<!-- =========================
+     الصفحة 4
+========================= -->
+<!-- =========================
+     صفحة الروتين الجديدة
+========================= -->
+
+<div id="page3" class="page">
+
+    <h1 id="routineTitle">إصنع روتينك الكروي</h1>
+
+    <div class="box">
+
+        <button onclick="showInput('ageInput')">
+            <span id="ageText">العمر</span> ▼
+        </button>
+
+        <div id="ageInput" style="display:none">
+            <input type="number" id="age" placeholder="العمر">
+        </div>
+
+    </div>
+
+
+    <div class="box">
+
+        <button onclick="showInput('heightInput')">
+            <span id="heightText">الطول</span> ▼
+        </button>
+
+        <div id="heightInput" style="display:none">
+            <input type="number" id="height" placeholder="الطول">
+        </div>
+
+    </div>
+
+
+    <div class="box">
+
+        <button onclick="showInput('weightInput')">
+            <span id="weightText">الوزن</span> ▼
+        </button>
+
+        <div id="weightInput" style="display:none">
+            <input type="number" id="weight" placeholder="الوزن">
+        </div>
+
+    </div>
+
+
+    <button
+        id="routineNext"
+        class="green"
+        onclick="makeRoutine()">
+
+        التالي
+
+    </button>
+
+
+    <div id="routineResult"></div>
+
+
+    <button class="back" onclick="showPage(2)">
+        رجوع
+    </button>
+
+</div>
+
+
+<!-- =========================
+     صفحة المشاكل
+========================= -->
+
+<div id="page4" class="page">
+
+    <h1 id="problemsTitle">مشاكلي</h1>
+
+    <button
+        id="problem1"
+        class="problem"
+        onclick="problem(1)">
+
+        1 ـ التحكم بالكرة
+
+    </button>
+
+
+    <button
+        id="problem2"
+        class="problem"
+        onclick="problem(2)">
+
+        2 ـ السرعة
+
+    </button>
+
+
+    <button
+        id="problem3"
+        class="problem"
+        onclick="problem(3)">
+
+        3 ـ الحالة البدنية
+
+    </button>
+
+
+    <button
+        id="problem4"
+        class="problem"
+        onclick="problem(4)">
+
+        4 ـ التركيز
+
+    </button>
+
+
+    <div id="problemResult"></div>
+
+
+    <button class="back" onclick="showPage(2)">
+        رجوع
+    </button>
+
+</div>
+<div id="page4" class="page">
+
+    <h1 id="problemsTitle">
+        مشاكلي
+    </h1>
+
+
+    <button
+        id="problem1"
+        class="problem"
+        onclick="problem(1)">
+
+        1 ـ التحكم بالكرة
+
+    </button>
+
+
+    <button
+        id="problem2"
+        class="problem"
+        onclick="problem(2)">
+
+        2 ـ السرعة
+
+    </button>
+
+
+    <button
+        id="problem3"
+        class="problem"
+        onclick="problem(3)">
+
+        3 ـ الحالة البدنية
+
+    </button>
+
+
+    <button
+        id="problem4"
+        class="problem"
+        onclick="problem(4)">
+
+        4 ـ التركيز
+
+    </button>
+
+
+    <div id="problemResult"></div>
+
+
+    <button class="back" onclick="showPage(2)">
+        رجوع
+    </button>
+
+</div>
+
+
+
+<script>
+
+/* اللغة */
+
+var language = "";
+
+
+/* فتح اللغات */
+
+function openLanguages(){
+
+    document.getElementById("languages").style.display="block";
+
+}
+
+
+/* اختيار اللغة */
+
+function setLanguage(lang){
+
+    language=lang;
+
+
+    if(lang=="fr"){
+
+        document.getElementById("welcome").innerHTML="Bienvenue";
+
+        document.getElementById("next").innerHTML="Suivant";
+
+        document.getElementById("welcomeHere").innerHTML="Bienvenue ici";
+
+        document.getElementById("routineButton").innerHTML=
+        "Crée ta routine de football";
+
+        document.getElementById("problemsButton").innerHTML=
+        "Mes problèmes";
+
+        document.getElementById("routineTitle").innerHTML=
+        "Crée ta routine de football";
+
+        document.getElementById("ageText").innerHTML="Âge";
+
+        document.getElementById("heightText").innerHTML="Taille";
+
+        document.getElementById("weightText").innerHTML="Poids";
+
+        document.getElementById("routineNext").innerHTML="Suivant";
+
+        document.getElementById("problemsTitle").innerHTML=
+        "Mes problèmes";
+
+        document.getElementById("problem1").innerHTML=
+        "1 — Contrôle du ballon";
+
+        document.getElementById("problem2").innerHTML=
+        "2 — Vitesse";
+
+        document.getElementById("problem3").innerHTML=
+        "3 — Condition physique";
+
+        document.getElementById("problem4").innerHTML=
+        "4 — Concentration";
+
+    }
+
+
+    if(lang=="en"){
+
+        document.getElementById("welcome").innerHTML="Welcome";
+
+        document.getElementById("next").innerHTML="Next";
+
+        document.getElementById("welcomeHere").innerHTML="Welcome here";
+
+        document.getElementById("routineButton").innerHTML=
+        "Create your football routine";
+
+        document.getElementById("problemsButton").innerHTML=
+        "My problems";
+
+        document.getElementById("routineTitle").innerHTML=
+        "Create your football routine";
+
+        document.getElementById("ageText").innerHTML="Age";
+
+        document.getElementById("heightText").innerHTML="Height";
+
+        document.getElementById("weightText").innerHTML="Weight";
+
+        document.getElementById("routineNext").innerHTML="Next";
+
+        document.getElementById("problemsTitle").innerHTML=
+        "My problems";
+
+        document.getElementById("problem1").innerHTML=
+        "1 — Ball control";
+
+        document.getElementById("problem2").innerHTML=
+        "2 — Speed";
+
+        document.getElementById("problem3").innerHTML=
+        "3 — Physical condition";
+
+        document.getElementById("problem4").innerHTML=
+        "4 — Focus";
+
+    }
+
+
+    if(lang=="ar"){
+
+        document.getElementById("welcome").innerHTML="مرحبا بك";
+
+        document.getElementById("next").innerHTML="التالي";
+
+        document.getElementById("welcomeHere").innerHTML="مرحبا بك هنا";
+
+        document.getElementById("routineButton").innerHTML=
+        "إصنع روتينك الكروي";
+
+        document.getElementById("problemsButton").innerHTML=
+        "مشاكلي";
+
+        document.getElementById("routineTitle").innerHTML=
+        "إصنع روتينك الكروي";
+
+        document.getElementById("ageText").innerHTML="العمر";
+
+        document.getElementById("heightText").innerHTML="الطول";
+
+        document.getElementById("weightText").innerHTML="الوزن";
+
+        document.getElementById("routineNext").innerHTML="التالي";
+
+        document.getElementById("problemsTitle").innerHTML=
+        "مشاكلي";
+
+        document.getElementById("problem1").innerHTML=
+        "1 ـ التحكم بالكرة";
+
+        document.getElementById("problem2").innerHTML=
+        "2 ـ السرعة";
+
+        document.getElementById("problem3").innerHTML=
+        "3 ـ الحالة البدنية";
+
+        document.getElementById("problem4").innerHTML=
+        "4 ـ التركيز";
+
+    }
+
+
+    document.getElementById("next").disabled=false;
+
+    document.getElementById("next").className="active";
+
+    document.getElementById("languages").style.display="none";
+
+}
+
+
+/* الصفحة 2 */
+
+function goPage2(){
+
+    if(language==""){
+        return;
+    }
+
+    showPage(2);
+
+}
+
+
+/* صفحة الروتين */
+
+function goPage3(){
+
+    showPage(3);
+
+}
+
+
+/* صفحة المشاكل */
+
+function goPage4(){
+
+    showPage(4);
+
+}
+
+
+/* إظهار صفحة */
+
+function showPage(number){
+
+    document.getElementById("page1").className="page";
+
+    document.getElementById("page2").className="page";
+
+    document.getElementById("page3").className="page";
+
+    document.getElementById("page4").className="page";
+
+    document.getElementById("page"+number).className="page active";
+
+    window.scrollTo(0,0);
+
+}
+
+
+/* فتح خانة */
+
+function showInput(id){
+
+    var box=document.getElementById(id);
+
+    if(box.style.display=="none"){
+
+        box.style.display="block";
+
+    }else{
+
+        box.style.display="none";
+
+    }
+
+}
+
+
+/* الروتين */
+
+function makeRoutine(){
+
+    var age = document.getElementById("age").value;
+    var height = document.getElementById("height").value;
+    var weight = document.getElementById("weight").value;
+
+    if(age=="" || height=="" || weight==""){
+
+        if(language=="fr"){
+            document.getElementById("routineResult").innerHTML =
+            '<div class="result">Veuillez remplir l’âge, la taille et le poids.</div>';
+        }
+
+        else if(language=="en"){
+            document.getElementById("routineResult").innerHTML =
+            '<div class="result">Please enter your age, height and weight.</div>';
+        }
+
+        else{
+            document.getElementById("routineResult").innerHTML =
+            '<div class="result">من فضلك أدخل العمر والطول والوزن.</div>';
+        }
+
+        return;
+    }
+
+
+    /* العربية */
+
+    if(language=="ar"){
+
+        document.getElementById("routineResult").innerHTML =
+
+        '<div class="result">'+
+
+        '<h2>⚽ روتينك الكروي اليومي</h2>'+
+
+        '<p><b>07:00</b> — الاستيقاظ وشرب الماء</p>'+
+
+        '<p><b>07:30</b> — الفطور</p>'+
+        '<p>بيض + خبز + فاكهة + ماء</p>'+
+
+        '<p><b>10:30</b> — سناك خفيف</p>'+
+        '<p>فاكهة أو زبادي</p>'+
+
+        '<p><b>13:30</b> — الغداء</p>'+
+        '<p>وجبة متوازنة تحتوي على مصدر للبروتين + النشويات + الخضروات</p>'+
+
+        '<p><b>16:30</b> — سناك قبل التمرين</p>'+
+        '<p>فاكهة + ماء</p>'+
+
+        '<p><b>17:00</b> — الإحماء</p>'+
+        '<p>10 دقائق إحماء خفيف</p>'+
+
+        '<p><b>17:10</b> — تدريب كرة القدم</p>'+
+        '<p>التحكم بالكرة + السرعة + تمارين بدنية مناسبة</p>'+
+
+        '<p><b>18:20</b> — التمدد والاسترجاع</p>'+
+        '<p>10 دقائق تمدد خفيف وراحة</p>'+
+
+        '<p><b>20:00</b> — العشاء</p>'+
+        '<p>وجبة متوازنة + ماء</p>'+
+
+        '<p><b>21:30</b> — الاستعداد للنوم</p>'+
+
+        '<p><b>22:00</b> — النوم</p>'+
+
+        '<hr>'+
+
+        '<p><b>المعلومات:</b> العمر '+age+
+        ' سنة — الطول '+height+
+        ' سم — الوزن '+weight+' كغ</p>'+
+
+        '<p>هذا روتين عام، ويمكن تعديل الأوقات حسب المدرسة والصلاة والالتزامات اليومية.</p>'+
+
+        '</div>';
+    }
+
+
+    /* الفرنسية */
+
+    else if(language=="fr"){
+
+        document.getElementById("routineResult").innerHTML =
+
+        '<div class="result">'+
+
+        '<h2>⚽ Ta routine quotidienne de football</h2>'+
+
+        '<p><b>07:00</b> — Réveil et eau</p>'+
+
+        '<p><b>07:30</b> — Petit-déjeuner</p>'+
+        '<p>Œufs + pain + fruit + eau</p>'+
+
+        '<p><b>10:30</b> — Petite collation</p>'+
+        '<p>Fruit ou yaourt</p>'+
+
+        '<p><b>13:30</b> — Déjeuner</p>'+
+        '<p>Repas équilibré avec protéines + féculents + légumes</p>'+
+
+        '<p><b>16:30</b> — Collation avant l’entraînement</p>'+
+        '<p>Fruit + eau</p>'+
+
+        '<p><b>17:00</b> — Échauffement</p>'+
+        '<p>10 minutes d’échauffement léger</p>'+
+
+        '<p><b>17:10</b> — Entraînement de football</p>'+
+        '<p>Contrôle du ballon + vitesse + exercices physiques adaptés</p>'+
+
+        '<p><b>18:20</b> — Étirements et récupération</p>'+
+        '<p>10 minutes d’étirements légers et récupération</p>'+
+
+        '<p><b>20:00</b> — Dîner</p>'+
+        '<p>Repas équilibré + eau</p>'+
+
+        '<p><b>21:30</b> — Préparation au sommeil</p>'+
+
+        '<p><b>22:00</b> — Sommeil</p>'+
+
+        '<hr>'+
+
+        '<p><b>Informations :</b> âge '+age+
+        ' ans — taille '+height+
+        ' cm — poids '+weight+' kg</p>'+
+
+        '<p>Cette routine est générale et peut être adaptée à l’école, aux prières et aux obligations quotidiennes.</p>'+
+
+        '</div>';
+    }
+
+
+    /* الإنجليزية */
+
+    else{
+
+        document.getElementById("routineResult").innerHTML =
+
+        '<div class="result">'+
+
+        '<h2>⚽ Your Daily Football Routine</h2>'+
+
+        '<p><b>07:00</b> — Wake up and drink water</p>'+
+
+        '<p><b>07:30</b> — Breakfast</p>'+
+        '<p>Eggs + bread + fruit + water</p>'+
+
+        '<p><b>10:30</b> — Light snack</p>'+
+        '<p>Fruit or yogurt</p>'+
+
+        '<p><b>13:30</b> — Lunch</p>'+
+        '<p>Balanced meal with protein + carbohydrates + vegetables</p>'+
+
+        '<p><b>16:30</b> — Pre-training snack</p>'+
+        '<p>Fruit + water</p>'+
+
+        '<p><b>17:00</b> — Warm-up</p>'+
+        '<p>10 minutes of light warm-up</p>'+
+
+        '<p><b>17:10</b> — Football training</p>'+
+        '<p>Ball control + speed + age-appropriate physical exercises</p>'+
+
+        '<p><b>18:20</b> — Stretching and recovery</p>'+
+        '<p>10 minutes of light stretching and recovery</p>'+
+
+        '<p><b>20:00</b> — Dinner</p>'+
+        '<p>Balanced meal + water</p>'+
+
+        '<p><b>21:30</b> — Prepare for sleep</p>'+
+
+        '<p><b>22:00</b> — Sleep</p>'+
+
+        '<hr>'+
+
+        '<p><b>Information:</b> age '+age+
+        ' years — height '+height+
+        ' cm — weight '+weight+' kg</p>'+
+
+        '<p>This is a general routine and can be adjusted around school, prayers and daily responsibilities.</p>'+
+
+        '</div>';
+    }
+
+}
+
+/* المشاكل */
+
+function problem(number){
+
+    var title="";
+    var text="";
+
+
+    if(language=="ar"){
+
+        if(number==1){
+
+            title="التحكم بالكرة";
+
+            text=
+            "1 ـ القفز يميناً ويساراً فوق شريط على الأرض لمدة 30 ثانية × 3 مجموعات.<br><br>"+
+            "2 ـ لمس الكرة بالقدم اليمنى ثم اليسرى لمدة 20 ثانية × 3 مجموعات.<br><br>"+
+            "3 ـ تمرين الزيكزاك بين أربعة أشياء لمدة 30 ثانية × 4 مجموعات.";
+
+        }
+
+
+        if(number==2){
+
+            title="السرعة";
+
+            text=
+            "1 ـ ركض سريع في المكان لمدة 30 ثانية × مجموعتين.<br><br>"+
+            "2 ـ تمرين سريع بالقدمين فوق شريط على الأرض لمدة 20 ثانية × 3 مجموعات.<br><br>"+
+            "3 ـ قفز عمودي لمدة 20 ثانية × 3 مجموعات.";
+
+        }
+
+
+        if(number==3){
+
+            title="الحالة البدنية";
+
+            text=
+            "1 ـ الضغط: 10 تكرارات × 3 مجموعات.<br><br>"+
+            "2 ـ البلانك: 30 ثانية × مجموعتين.<br><br>"+
+            "3 ـ السكوات: 10 تكرارات × 3 مجموعات.<br><br>"+
+            "4 ـ تمارين الآبس: 10 تكرارات × 3 مجموعات.<br><br>"+
+            "ملاحظة: إن لم تفهم التمارين يمكنكم مراسلتي عبر رقم الهاتف أسفل الصفحة."+
+            '<div class="phone">0787277797</div>';
+
+        }
+
+
+        if(number==4){
+
+            title="التركيز";
+
+            text=
+            "1 ـ مشاهدة المباريات والتركيز على اللاعب الذي يلعب في نفس مركزك وتحليل لعبه.<br><br>"+
+            "2 ـ بمساعدة شخص آخر، يتم استعمال أشياء بألوان مختلفة، وعند إعطاء الإشارة تقول بسرعة اللون الذي تراه لمدة 1 دقيقة × مجموعتين.";
+
+        }
+
+    }
+
+
+    else if(language=="fr"){
+
+        if(number==1){
+
+            title="Contrôle du ballon";
+
+            text=
+            "1 — Sauts à gauche et à droite au-dessus d'une bande pendant 30 secondes × 3 séries.<br><br>"+
+            "2 — Toucher rapidement le ballon avec le pied droit puis gauche pendant 20 secondes × 3 séries.<br><br>"+
+            "3 — Exercice en zigzag entre quatre objets pendant 30 secondes × 4 séries.";
+
+        }
+
+
+        if(number==2){
+
+            title="Vitesse";
+
+            text=
+            "1 — Course rapide sur place pendant 30 secondes × 2 séries.<br><br>"+
+            "2 — Travail rapide des pieds au-dessus d'une bande pendant 20 secondes × 3 séries.<br><br>"+
+            "3 — Sauts verticaux pendant 20 secondes × 3 séries.";
+
+        }
+
+
+        if(number==3){
+
+            title="Condition physique";
+
+            text=
+            "1 — Pompes : 10 répétitions × 3 séries.<br><br>"+
+            "2 — Planche : 30 secondes × 2 séries.<br><br>"+
+            "3 — Squats : 10 répétitions × 3 séries.<br><br>"+
+            "4 — Exercices abdominaux : 10 répétitions × 3 séries.<br><br>"+
+            "Remarque : si vous ne comprenez pas les exercices, vous pouvez me contacter au numéro ci-dessous."+
+            '<div class="phone">0787277797</div>';
+
+        }
+
+
+        if(number==4){
+
+            title="Concentration";
+
+            text=
+            "1 — Regarder des matchs et analyser le joueur qui joue au même poste que toi.<br><br>"+
+            "2 — Avec l'aide d'une autre personne, identifier rapidement la couleur d'un objet après le signal pendant 1 minute × 2 séries.";
+
+        }
+
+    }
+
+
+    else{
+
+        if(number==1){
+
+            title="Ball control";
+
+            text=
+            "1 — Jump left and right over a strip for 30 seconds × 3 sets.<br><br>"+
+            "2 — Touch the ball with the right foot then the left foot for 20 seconds × 3 sets.<br><br>"+
+            "3 — Zigzag drill between four objects for 30 seconds × 4 sets.";
+
+        }
+
+
+        if(number==2){
+
+            title="Speed";
+
+            text=
+            "1 — Fast running in place for 30 seconds × 2 sets.<br><br>"+
+            "2 — Quick footwork over a strip for 20 seconds × 3 sets.<br><br>"+
+            "3 — Vertical jumps for 20 seconds × 3 sets.";
+
+        }
+
+
+        if(number==3){
+
+            title="Physical condition";
+
+            text=
+            "1 — Push-ups: 10 repetitions × 3 sets.<br><br>"+
+            "2 — Plank: 30 seconds × 2 sets.<br><br>"+
+            "3 — Squats: 10 repetitions × 3 sets.<br><br>"+
+            "4 — Ab exercises: 10 repetitions × 3 sets.<br><br>"+
+            "Note: if you do not understand the exercises, you can contact me using the number below."+
+            '<div class="phone">0787277797</div>';
+
+        }
+
+
+        if(number==4){
+
+            title="Focus";
+
+            text=
+            "1 — Watch matches and analyze the player who plays in the same position as you.<br><br>"+
+            "2 — With another person's help, identify the color of an object after a signal for 1 minute × 2 sets.";
+
+        }
+
+    }
+
+
+    document.getElementById("problemResult").innerHTML=
+    '<div class="result">'+
+    '<h2>'+title+'</h2>'+
+    '<p>'+text+'</p>'+
+    '</div>';
+
+}
+
+</script>
+
+</body>
+</html>
